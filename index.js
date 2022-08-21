@@ -7,10 +7,11 @@ hero.addEventListener('mousemove', function (e) {
   const {offsetWidth: width, offsetHeight: height} = hero;
   let {offsetX: x, offsetY: y} = e;
 
-  // 虽然是hero添加的事件，但是其他节点也可以触发
   // 触发的节点是event.target
   // offsetX 和 offsetY 是相对于触发节点的坐标
   if (this !== e.target) {
+    // 虽然是hero添加的事件，但是容器内子节点也可以触发
+    // 子节点触发时坐标要加上触发节点本身的偏移量才是相对于hero本身的偏移量
     x = x + e.target.offsetLeft;
     y = y + e.target.offsetTop;
   }
